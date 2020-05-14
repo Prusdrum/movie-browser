@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from './createStore';
 import AppRouter from './AppRouter';
-import isDev from '../common/types/api/utils/isDev';
+import isDev from '../common/utils/isDev';
 
 const App = () => {
   const store = createStore();
