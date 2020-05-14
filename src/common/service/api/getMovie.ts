@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { IApiMovie } from '../types/api/IApiMovie';
-import { IApiError } from '../types/api/IApiError';
+import { IApiMovie } from '../../types/api/IApiMovie';
+import { IApiError } from '../../types/api/IApiError';
 
 const getApiKey = () => {
   return process.env.REACT_APP_MOVIE_API_KEY;

@@ -4,9 +4,9 @@ import {
   ActionNames, LOAD_MOVIE_DETAILS_ACTION,
   MOVIE_LOADED_ERROR,
 } from '../state/movieDetails/movieDetailsAction';
-import { getMovie } from '../common/api/getMovie';
+import { getMovie } from '../common/service/api/getMovie';
 
-function* loadMovieDetails(action: Action<LOAD_MOVIE_DETAILS_ACTION>) {
+export function* _loadMovieDetails(action: Action<LOAD_MOVIE_DETAILS_ACTION>) {
   try {
     const response = yield call(getMovie, action.payload.movieId);
     console.log(response)
@@ -18,6 +18,6 @@ function* loadMovieDetails(action: Action<LOAD_MOVIE_DETAILS_ACTION>) {
 export function* watchLoadMovieDetails() {
   yield takeLatest(
     ActionNames.LOAD_MOVIE_DETAILS,
-    loadMovieDetails,
+    _loadMovieDetails,
   );
 }
