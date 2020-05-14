@@ -3,8 +3,6 @@ import { runSaga } from 'redux-saga';
 import { get } from 'local-storage';
 import { ILocalStorage } from '../../common/types/local-storage/ILocalStorage';
 import { IMovie } from '../../common/types/state/IMovie';
-import { Action } from 'redux-actions';
-import { ActionNames } from '../../state/application/applicationActions';
 
 jest.mock('local-storage', () => ({
   get: jest.fn(),
@@ -35,14 +33,14 @@ describe('load movies from storage', () => {
       (get as jest.Mock).mockImplementationOnce(() => null);
     });
 
-    it('should do nothing', () => {
+    it('should only call app loaded action', () => {
       const dispatched: any[] = [];
       const saga = runSaga({
         dispatch: (action: any) => dispatched.push(action),
         getState: () => {},
       }, _loadMoviesFromLocalStorage);
 
-      expect(dispatched.length).toEqual(0);
+      expect(dispatched.length).toEqual(1);
     });
   });
 
@@ -64,7 +62,7 @@ describe('load movies from storage', () => {
         getState: () => {},
       }, _loadMoviesFromLocalStorage);
 
-      expect(dispatched.length).toEqual(1);
+      expect(dispatched.length).toEqual(2);
       expect(dispatched[0].payload).toEqual([
         makeMovie({
           id: '123',

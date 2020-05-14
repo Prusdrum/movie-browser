@@ -4,15 +4,23 @@ import { definition, path } from '../common/routing/routes';
 import AppPage from './AppPage';
 import MoviePage from '../pages/movie-page/MoviePage';
 import SearchPage from '../pages/search-page/SearchPage';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { LOAD_APP } from '../state/application/applicationActions';
+import { IRootState } from '../state/IRootState';
 
 export default () => {
   const dispatch = useDispatch();
+  const isAppLoaded = useSelector<IRootState, boolean>(state => state.application.isLoaded);
 
   useEffect(() => {
-    dispatch(LOAD_APP());
-  }, [dispatch]);
+    if (!isAppLoaded) {
+      dispatch(LOAD_APP());
+    }
+  }, [dispatch, isAppLoaded]);
+
+  if (!isAppLoaded) {
+    return null;
+  }
 
   return (
     <Router>

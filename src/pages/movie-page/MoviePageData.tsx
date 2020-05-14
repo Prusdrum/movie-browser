@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { IMovie } from '../../common/types/state/IMovie';
 import { useMovieRouteParams } from '../../common/routing/routes';
 import { IRootState } from '../../state/IRootState';
-import { LOAD_MOVIE_DETAILS } from '../../state/movieDetails/movieDetailsAction';
+import { LOAD_MOVIE_DETAILS, MOVIE_LOADED_SUCCESS } from '../../state/movieDetails/movieDetailsAction';
 import { IMovieDetailsState } from '../../state/movieDetails/movieDetailsState';
 
 interface ChildrenProps {
@@ -25,6 +25,8 @@ const MoviePageData = ({ children }: Props) => {
   useEffect(() => {
     if (!movie) {
       dispatch(LOAD_MOVIE_DETAILS({ movieId: id }));
+    } else {
+      dispatch(MOVIE_LOADED_SUCCESS());
     }
   }, [movie, id, dispatch]);
 
