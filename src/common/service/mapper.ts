@@ -8,7 +8,8 @@ export const movieFromApi = (response: IApiMovie): IMovie => {
     language: response.Language,
     plot: response.Plot,
     poster: response.Poster,
-    rated: response.Rated,
+    rating: response.imdbRating,
+    votes: response.imdbVotes,
     title: response.Title,
     year: response.Year,
   };
