@@ -26,5 +26,5 @@ export interface IApiMovie {
   BoxOffice: string;
   Production: string;
   Website: string;
-  Response: string;
+  Response: "True";
 }

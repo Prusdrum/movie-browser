@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
-import moviesReducer from './movies/moviesReducer';
 import { IRootState } from './IRootState';
+import moviesReducer from './movies/moviesReducer';
+import movieDetailsReducer from './movieDetails/movieDetailsReducer';
 
 export default combineReducers<IRootState>({
-  movies: moviesReducer
+  movies: moviesReducer,
+  movieDetails: movieDetailsReducer,
 });

@@ -1,7 +1,7 @@
 export interface IApiSearchResponse {
   Search: IApiMovie[];
   totalResults: string; // represents number
-  Response: string;
+  Response: "True";
 }
 
 export interface IApiMovie {
