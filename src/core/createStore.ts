@@ -1,13 +1,14 @@
 import thunk from 'redux-thunk';
 import rootReducer from '../state/rootReducer';
-import { combineReducers, compose, applyMiddleware, createStore as _createStore } from 'redux';
+import { compose, applyMiddleware, createStore as _createStore } from 'redux';
+import { IRootState } from '../state/IRootState';
 
-export const createStore = (initialState = {}) => {
+export const createStore = (initialState: Partial<IRootState> = {}) => {
   const middlewares = [
     thunk,
   ];
 
-  const reducer = combineReducers({ ...rootReducer });
+  const reducer = rootReducer;
   const createStoreWithMiddleware = compose(applyMiddleware(...middlewares))(_createStore);
   
   const store = createStoreWithMiddleware(reducer, initialState);
