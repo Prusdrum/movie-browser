@@ -15,10 +15,15 @@ const makeMovie = (props: Partial<IMovie>): IMovie => {
     language: '',
     plot: '',
     poster: '',
-    rating: '',
+    rating: 0,
     votes: '',
     title: '',
     year: '',
+    actors: '',
+    director: '',
+    released: '',
+    runtime: '',
+    writer: '',
     ...props,
   }
 }

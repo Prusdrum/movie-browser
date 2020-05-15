@@ -9,7 +9,7 @@ import { IMovieDetailsState } from '../../state/movieDetails/movieDetailsState';
 interface ChildrenProps {
   isLoaded: boolean;
   movie: null | IMovie;
-  error?: string;
+  error: string;
 }
 
 interface Props {

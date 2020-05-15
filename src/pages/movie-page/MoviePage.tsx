@@ -1,12 +1,15 @@
 import React from 'react';
 import MoviePageData from './MoviePageData';
-import { CircularProgress } from '@material-ui/core';
+import MoviePageDisplay from './MoviePageDisplay';
 
 const MoviePage = () => {
   return (
     <MoviePageData>
       {({ isLoaded, movie, error }) => (
-        isLoaded ? <div>Movie</div> : error ? <div>{error}</div> : <CircularProgress />
+        <MoviePageDisplay 
+          movie={movie}
+          isLoaded={isLoaded}
+          error={error}/>
       )}
     </MoviePageData>
   );
