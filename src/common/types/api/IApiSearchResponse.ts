@@ -1,10 +1,10 @@
 export interface IApiSearchResponse {
-  Search: IApiMovie[];
+  Search: IApiSearchMovie[];
   totalResults: string; // represents number
   Response: "True";
 }
 
-export interface IApiMovie {
+export interface IApiSearchMovie {
   Title: string;
   Year: string;
   imdbID: string;

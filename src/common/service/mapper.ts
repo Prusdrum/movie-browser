@@ -1,6 +1,8 @@
 import { IApiMovie } from "../types/api/IApiMovie";
 import { IMovie } from "../types/state/IMovie";
 import { EMPTY_API_VALUE } from '../constants';
+import { IApiSearchMovie } from "../types/api/IApiSearchResponse";
+import { IMovieSearchResult } from "../types/state/IMovieSearchResult";
 
 export const movieFromApi = (response: IApiMovie): IMovie => {
   return {
@@ -20,3 +22,12 @@ export const movieFromApi = (response: IApiMovie): IMovie => {
     released: response.Released,
   };
 };
+
+export const searchResultFromApi = (response: IApiSearchMovie): IMovieSearchResult => {
+  return {
+    id: response.imdbID,
+    title: response.Title,
+    poster: response.Poster === EMPTY_API_VALUE ? '' : response.Poster,
+    year: response.Year,
+  }
+}
