@@ -1,48 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import debounce from 'lodash/debounce';
+import { TextField, CircularProgress } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { TextField } from '@material-ui/core';
-import { searchMovie } from '../../../common/service/api/searchMovie';
-import { IMovieSearchResult } from '../../../common/types/state/IMovieSearchResult';
-import { searchResultFromApi } from '../../../common/service/mapper';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { IRootState } from '../../../state/IRootState';
+import { UPDATE_QUERY } from '../../../state/search/searchActions';
+import { ISearchState } from '../../../state/search/searchState';
 import SearchInputLabel from './SearchInputLabel';
 
 const SearchInput = () => {
-  const [options, setOptions] = useState<IMovieSearchResult[]>([]);
-  const [query, setQuery] = useState('');
-
-  const setQueryDebounced = debounce(setQuery, 300);
-
-  useEffect(() => {
-    let active = true;
-
-    (async () => {
-      if (query.length >= 3) {
-        try {
-          const response = await searchMovie(query);
-          if (active) {
-            setOptions(response.Search.map(searchResultFromApi));
-          }
-        } catch (err) {
-          
-        }
-  
-      }
-    })();
-
-    return () => {
-      active = false;
-    }
-  }, [query]);
+  const {
+    isLoading,
+    query,
+    results
+  } = useSelector<IRootState, ISearchState>(state => state.search);
+  const dispatch = useDispatch();
 
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQueryDebounced(event.target.value);
+    dispatch(UPDATE_QUERY(event.target.value));
   }
 
   return (
     <div>
       <Autocomplete 
-        options={options}
+        options={results}
         renderOption={(option) => <SearchInputLabel movie={option}/>}
         getOptionLabel={(option) => option.title}
         renderInput={(params) => (
@@ -52,6 +32,15 @@ const SearchInput = () => {
             onChange={onInputChange}
             placeholder="Start typing movie titles..."
             variant="outlined"
+            InputProps={{
+              ...params.InputProps,
+              endAdornment: (
+                <>
+                {isLoading ? <CircularProgress color="primary" size={20} /> : null}
+                {params.InputProps.endAdornment}
+                </>
+              )
+            }}
           />
         )}
       />

@@ -12,7 +12,7 @@ const isError = (response: IApiSearchResponse | IApiError): response is IApiErro
   return response.Response === 'False';
 };
 
-export async function searchMovie(query: string) {
+export async function searchMovie(query: string): Promise<IApiSearchResponse> {
   const url = `${BASE_URL}/?s=${query}&apikey=${getApiKey()}`;
 
   try {
