@@ -4,7 +4,11 @@ import SearchInput from './components/SearchInput';
 
 const useStyle = makeStyles((theme) => ({
   inputContainer: {
-    width: '50%',
+    [theme.breakpoints.up('sm')] : {
+      width: '50%',
+    },
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
     margin: '0 auto',
   },
 }))
