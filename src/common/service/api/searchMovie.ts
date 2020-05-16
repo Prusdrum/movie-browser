@@ -1,12 +1,11 @@
 import axios from 'axios';
 import { IApiError } from '../../types/api/IApiError';
 import { IApiSearchResponse } from '../../types/api/IApiSearchResponse';
+import { BASE_URL } from './shared';
 
 const getApiKey = () => {
   return process.env.REACT_APP_MOVIE_API_KEY;
 }
-
-const BASE_URL = 'http://www.omdbapi.com';
 
 const isError = (response: IApiSearchResponse | IApiError): response is IApiError => {
   return response.Response === 'False';
