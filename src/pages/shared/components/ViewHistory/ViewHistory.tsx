@@ -1,7 +1,7 @@
 import React from 'react';
-import { IRootState } from '../../state/IRootState';
+import { IRootState } from '../../../../state/IRootState';
 import { useSelector } from 'react-redux';
-import { IMovie } from '../../common/types/state/IMovie';
+import { IMovie } from '../../../../common/types/state/IMovie';
 import { Typography, makeStyles, Grid } from '@material-ui/core';
 import ViewHistoryItem from './ViewHistoryItem';
 

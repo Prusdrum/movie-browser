@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
-import SearchInput from '../shared/components/SearchInput';
-import ViewHistory from './ViewHistory';
+import SearchInput from '../shared/components/SearchInput/SearchInput';
+import ViewHistory from '../shared/components/ViewHistory/ViewHistory';
 
 const useStyle = makeStyles((theme) => ({
   inputContainer: {

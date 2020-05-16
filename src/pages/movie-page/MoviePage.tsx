@@ -1,8 +1,9 @@
 import React from 'react';
 import MoviePageData from './MoviePageData';
 import MoviePageDisplay from './MoviePageDisplay';
-import SearchInput from '../shared/components/SearchInput';
-import { makeStyles } from '@material-ui/core';
+import SearchInput from '../shared/components/SearchInput/SearchInput';
+import ViewHistory from '../shared/components/ViewHistory/ViewHistory';
+import { makeStyles, Divider } from '@material-ui/core';
 
 const useStyle = makeStyles((theme) => ({
   inputContainer: {
@@ -30,6 +31,8 @@ const MoviePage = () => {
             movie={movie}
             isLoaded={isLoaded}
             error={error}/>
+          <Divider />
+          <ViewHistory />
         </div>
       )}
     </MoviePageData>

@@ -1,7 +1,7 @@
 import React from 'react';
-import { IMovieSearchResult } from '../../../common/types/state/IMovieSearchResult';
+import { IMovieSearchResult } from '../../../../common/types/state/IMovieSearchResult';
 import { Link } from 'react-router-dom';
-import { path } from '../../../common/routing/routes';
+import { path } from '../../../../common/routing/routes';
 import { makeStyles, Avatar } from '@material-ui/core';
 
 interface Props {

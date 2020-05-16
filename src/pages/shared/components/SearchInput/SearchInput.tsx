@@ -2,9 +2,9 @@ import { TextField, CircularProgress } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { IRootState } from '../../../state/IRootState';
-import { UPDATE_QUERY } from '../../../state/search/searchActions';
-import { ISearchState } from '../../../state/search/searchState';
+import { IRootState } from '../../../../state/IRootState';
+import { UPDATE_QUERY } from '../../../../state/search/searchActions';
+import { ISearchState } from '../../../../state/search/searchState';
 import SearchInputLabel from './SearchInputLabel';
 
 const SearchInput = () => {
