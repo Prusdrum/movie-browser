@@ -6,6 +6,7 @@ import MoviePoster from './components/MoviePoster';
 import MovieInfo from './components/MovieInfo';
 import MovieRating from './components/MovieRating';
 import MoviePlot from './components/MoviePlot';
+import { getMovieTitle } from '../../common/service/format';
 
 interface Props {
   movie: IMovie | null;
@@ -36,7 +37,9 @@ const MoviePageDisplay = ({ movie, error, isLoaded }: Props) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={4}>
-        <Typography variant="h4" component="h2" className={style.title}>{movie.title} ({movie.year})</Typography>
+        <Typography variant="h4" component="h2" className={style.title}>
+          {getMovieTitle(movie)}
+        </Typography>
         <MoviePoster movie={movie}/>
       </Grid>
       <Grid item xs={12} sm={8}>

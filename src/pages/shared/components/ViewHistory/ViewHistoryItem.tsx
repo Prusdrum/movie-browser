@@ -4,6 +4,7 @@ import { makeStyles, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { path } from '../../../../common/routing/routes';
 import ViewHistoryPoster from './ViewHistoryPoster';
+import { getMovieTitle } from '../../../../common/service/format';
 
 interface Props {
   movie: IMovie;
@@ -30,7 +31,7 @@ const ViewHistoryItem = ({ movie }: Props) => {
       <div className={style.title}>
         <Link to={path.goToMovie(movie.id)} style={{ textDecoration: 'none', color: 'black' }}>
           <Typography component="h3" variant="h6">
-            {movie.title}
+            {getMovieTitle(movie)}
           </Typography>
         </Link>
       </div>

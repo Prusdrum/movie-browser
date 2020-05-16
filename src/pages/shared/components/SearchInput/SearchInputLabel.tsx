@@ -3,6 +3,7 @@ import { IMovieSearchResult } from '../../../../common/types/state/IMovieSearchR
 import { Link } from 'react-router-dom';
 import { path } from '../../../../common/routing/routes';
 import { makeStyles, Avatar } from '@material-ui/core';
+import { getMovieTitle } from '../../../../common/service/format';
 
 interface Props {
   movie: IMovieSearchResult;
@@ -29,7 +30,7 @@ const SearchInputLabel = ({  movie }: Props) => {
       style={{ textDecoration: 'none' }}>
       <Avatar variant="square" src={movie.poster}/>
       <div className={style.title}>
-        {movie.title} ({movie.year})
+        {getMovieTitle(movie)}
       </div>
     </Link>
   );

@@ -17,7 +17,7 @@ const useStyle = makeStyles((theme) => ({
 }))
 
 const getLoadedMovies = (state: IRootState) => 
-  Object.entries(state.movies).map(([id, movie]) => ({...movie})).slice(0, 6); 
+  Object.entries(state.movies).map(([id, movie]) => ({...movie})).slice(0, 1000); 
 
 const ViewHistory = () => {
   const movies = useSelector<IRootState, IMovie[]>(getLoadedMovies);
