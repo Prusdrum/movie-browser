@@ -1,6 +1,6 @@
 import React from 'react';
 import { IMovie } from '../../common/types/state/IMovie';
-import { CircularProgress, Grid, Typography } from '@material-ui/core';
+import { CircularProgress, Grid, Typography, makeStyles } from '@material-ui/core';
 import ErrorNotification from '../../common/components/ErrorNotification/ErrorNotification';
 import MoviePoster from './components/MoviePoster';
 import MovieInfo from './components/MovieInfo';
@@ -13,8 +13,15 @@ interface Props {
   error: string;
 }
 
+const useStyle = makeStyles((theme) => ({
+  title: {
+    wordBreak: 'break-word',
+  }
+}));
+
 const MoviePageDisplay = ({ movie, error, isLoaded }: Props) => {
-  if (!isLoaded || movie === null) {
+  const style = useStyle();
+  if (!isLoaded || !movie) {
     return (
       <CircularProgress />
     );
@@ -29,7 +36,7 @@ const MoviePageDisplay = ({ movie, error, isLoaded }: Props) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={4}>
-        <Typography variant="h3" component="h2">{movie.title} ({movie.year})</Typography>
+        <Typography variant="h4" component="h2" className={style.title}>{movie.title} ({movie.year})</Typography>
         <MoviePoster movie={movie}/>
       </Grid>
       <Grid item xs={12} sm={8}>

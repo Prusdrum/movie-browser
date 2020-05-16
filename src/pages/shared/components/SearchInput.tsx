@@ -30,7 +30,7 @@ const SearchInput = () => {
             {...params}
             value={query}
             onChange={onInputChange}
-            placeholder="Start typing movie titles..."
+            placeholder="Search movies e.g. Forrest Gump"
             variant="outlined"
             InputProps={{
               ...params.InputProps,

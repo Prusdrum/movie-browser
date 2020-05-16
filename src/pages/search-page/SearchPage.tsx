@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import SearchInput from '../shared/components/SearchInput';
+import ViewHistory from './ViewHistory';
 
 const useStyle = makeStyles((theme) => ({
   inputContainer: {
@@ -19,6 +20,9 @@ const SearchPage = () => {
     <div>
       <div className={style.inputContainer}>
         <SearchInput />
+      </div>
+      <div>
+        <ViewHistory />
       </div>
     </div>
   )
