@@ -23,7 +23,7 @@ export default () => {
   }
 
   return (
-    <Router>
+    <Router basename={"/movie-browser"}>
       <Switch>
         <Route exact path={definition.home}>
           <Redirect to={path.goToSearchPage()}/>
